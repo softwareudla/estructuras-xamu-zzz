@@ -19,29 +19,29 @@ int menu() {
 
 void registrarLibros(struct Libro libros[], int *n, int *contadorId) {
     if (*n >= 20) {
-        printf("No se pueden registrar más libros. Límite alcanzado.\n");
+        printf("No se pueden registrar mas libros. Limite alcanzado.\n");
         return;
     }
 
     printf("\n--- Registrar Libro ---\n");
     libros[*n].id = (*contadorId)++; // Generar ID automáticamente
-    printf("Título: ");
+    printf("Titulo: ");
     scanf(" %[^\n]", libros[*n].titulo);
     printf("Autor: ");
     scanf(" %[^\n]", libros[*n].autor);
-    printf("Año de publicación (máximo 2024): ");
+    printf("Ano de publicación (maximo 2024): ");
     while (scanf("%d", &libros[*n].anio) != 1 || libros[*n].anio < 0 || libros[*n].anio > 2024) {
-        printf("Error: El año debe ser un número positivo y no mayor a 2024.\n");
+        printf("Error: El ano debe ser un numero positivo y no mayor a 2024.\n");
         while (getchar() != '\n'); // Limpiar buffer
     }
     strcpy(libros[*n].estado, "Disponible");
     (*n)++;
-    printf("Libro registrado con éxito. ID asignado: %d\n", libros[*n - 1].id);
+    printf("Libro registrado con exito. ID asignado: %d\n", libros[*n - 1].id);
 }
 
 void mostrarLibros(struct Libro libros[], int n) {
     printf("\n--- Lista de Libros ---\n");
-    printf("ID\tTítulo\t\tAutor\t\tAño\tEstado\n");
+    printf("ID\tTitulo\t\tAutor\t\tAno\tEstado\n");
     for (int i = 0; i < n; i++) {
         printf("%d\t%s\t\t%s\t\t%d\t%s\n", libros[i].id, libros[i].titulo, libros[i].autor, libros[i].anio, libros[i].estado);
     }
@@ -52,9 +52,9 @@ void buscarLibroId(struct Libro libros[], int n, int id) {
         if (libros[i].id == id) {
             printf("\n--- Libro Encontrado ---\n");
             printf("ID: %d\n", libros[i].id);
-            printf("Título: %s\n", libros[i].titulo);
+            printf("Titulo: %s\n", libros[i].titulo);
             printf("Autor: %s\n", libros[i].autor);
-            printf("Año: %d\n", libros[i].anio);
+            printf("Ano: %d\n", libros[i].anio);
             printf("Estado: %s\n", libros[i].estado);
             return;
         }
@@ -67,9 +67,9 @@ void buscarLibroTitulo(struct Libro libros[], int n, char *titulo) {
         if (strcmp(libros[i].titulo, titulo) == 0) {
             printf("\n--- Libro Encontrado ---\n");
             printf("ID: %d\n", libros[i].id);
-            printf("Título: %s\n", libros[i].titulo);
+            printf("Titulo: %s\n", libros[i].titulo);
             printf("Autor: %s\n", libros[i].autor);
-            printf("Año: %d\n", libros[i].anio);
+            printf("Ano: %d\n", libros[i].anio);
             printf("Estado: %s\n", libros[i].estado);
             return;
         }
@@ -100,7 +100,7 @@ int eliminarLibro(struct Libro libros[], int *n, int id) {
                 libros[j] = libros[j + 1];
             }
             (*n)--;
-            printf("Libro eliminado con éxito.\n");
+            printf("Libro eliminado con exito.\n");
             return 1;
         }
     }
